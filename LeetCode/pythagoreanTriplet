@@ -1,0 +1,65 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
+public class pythagoreanTriplet {
+
+    public static boolean findPythagoreanTriplets(ArrayList<Integer> numbers) {
+        if (numbers == null || numbers.size() < 3) {
+            return false; // Not enough numbers to form a triplet
+        }
+
+        // 1. Square each number and store in a new ArrayList or modify in place
+        ArrayList<Long> squaredNumbers = new ArrayList<>();
+        for (int num : numbers) {
+            squaredNumbers.add((long) num * num);
+        }
+
+        // 2. Sort the squared numbers in ascending order
+        Collections.sort(squaredNumbers);
+
+        // 3. Use a two-pointer approach to find a^2 + b^2 = c^2
+        int n = squaredNumbers.size();
+        for (int i = n - 1; i >= 2; i--) { // Fix 'c^2' (largest element)
+            long cSquared = squaredNumbers.get(i);
+            int left = 0; // Pointer for 'a^2'
+            int right = i - 1; // Pointer for 'b^2'
+
+            while (left < right) {
+                long sumOfSquares = squaredNumbers.get(left) + squaredNumbers.get(right);
+
+                if (sumOfSquares == cSquared) {
+                    // Found a Pythagorean triplet
+                    System.out.println("Pythagorean Triplet Found: " + 
+                                       (int) Math.sqrt(squaredNumbers.get(left)) + ", " +
+                                       (int) Math.sqrt(squaredNumbers.get(right)) + ", " +
+                                       (int) Math.sqrt(cSquared));
+                    return true; // Return true as soon as one triplet is found
+                } else if (sumOfSquares < cSquared) {
+                    left++; // Need a larger sum, move left pointer right
+                } else {
+                    right--; // Need a smaller sum, move right pointer left
+                }
+            }
+        }
+        return false; // No Pythagorean triplet found
+    }
+
+    public static void main(String[] args) {
+        ArrayList<Integer> nums1 = new ArrayList<>();
+        nums1.add(3);
+        nums1.add(4);
+        nums1.add(5);
+        nums1.add(6);
+        nums1.add(8);
+        nums1.add(10);
+        System.out.println("Finding triplets in nums1: " + findPythagoreanTriplets(nums1)); // Expected: true (3,4,5 and 6,8,10)
+
+        ArrayList<Integer> nums2 = new ArrayList<>();
+        nums2.add(1);
+        nums2.add(2);
+        nums2.add(7);
+        System.out.println("Finding triplets in nums2: " + findPythagoreanTriplets(nums2)); // Expected: false
+    }
+}

@@ -1,0 +1,31 @@
+using System;
+
+public class FlimsyBridge
+{
+    public static int UsageCount(int[] bridge)
+        
+    {  
+        
+    try{
+        int count = 0;
+        for(int i=0;i<=bridge.Length;i++){
+            //substract 2 from each value
+                bridge[i]= bridge[i]--;
+            if(bridge[i]<0){
+                count = i;
+                break;
+            }
+          return count;  
+        }
+        }
+     catch(NotImplementedException e){
+        throw new NotImplementedException("Waiting to be implemented.");
+         }
+    }
+
+    public static void Main(string[] args)
+    {
+        int[] bridge = { 7, 6, 5, 8 };
+        Console.WriteLine(UsageCount(bridge)); // Should print 2
+    }
+}
