@@ -12,9 +12,9 @@ import java.util.HashMap;
 import java.util.List;
 
 public class CountSubDomains{
-    public static List<String> countSubDomains(String[] domains){
+    public static List<String> countSubDomains(String[] cpdomains){
         HashMap<String, Integer> domainCounts = new HashMap<>();
-        for(String domain: domains){
+        for(String domain: cpdomains){
             String[] countParts = domain.split(" ") ;
             int count = Integer.parseInt(countParts[0]);
             String fullDomain = countParts[1];
