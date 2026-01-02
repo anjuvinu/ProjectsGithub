@@ -1,0 +1,16 @@
+
+public class BillPughSingleton{
+    // Private constructor to prevent instantiation
+    private BillPughSingleton() {
+    }
+
+    // Static inner helper class responsible for holding the Singleton instance
+    private static class Holder {
+        // The Singleton instance is created when the class is loaded
+        private static final BillPughSingleton INSTANCE = new BillPughSingleton();
+    }       
+    // Public method to provide access to the Singleton instance
+    public static BillPughSingleton getInstance() {
+        return Holder.INSTANCE;
+    }
+}
