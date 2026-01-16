@@ -1,7 +1,7 @@
 import java.util.Collections;
 import java.util.Queue;
 import java.util.PriorityQueue;
-public static class PriorityQueue {
+public static class LearnPriorityQueue {
 
     public static void learnPriorityQueueDS {
         //FIFO but in order values are displayed in pull method  (default is asc)

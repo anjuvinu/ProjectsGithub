@@ -1,5 +1,11 @@
+import DSAPatterns_TwoPointers.ValidPalindrome;
+
 public class Main {
     public static void main(String[] args) {
+        String s = "Was it a car or a cat I saw?";
+            ValidPalindrome vp = new ValidPalindrome();
+           boolean result = vp.solution(s);
+            System.out.println(result);
         // Tree 1 Construction
         TreeNode root1 = new TreeNode(3);
         root1.left = new TreeNode(5);
@@ -28,9 +34,9 @@ public class Main {
 
         // Run the solution
         LeafSimilarTrees sol = new LeafSimilarTrees();
-        boolean result = sol.leafSimilar(root1, root2);
+        //boolean result = sol.leafSimilar(root1, root2);
         
-        System.out.println("Are the trees leaf-similar? " + result); 
+       // System.out.println("Are the trees leaf-similar? " + result); 
         // Expected Output: true
     }
 }
